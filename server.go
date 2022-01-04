@@ -39,10 +39,9 @@ func (s *Server) serveUniverse(u Universe) {
 // server is the proceedure for serving http requests after
 // we have parsed and initialized our data.
 func (s *Server) serveInventory(i Inventory) {
-	e := json.NewEncoder(s.w)
 	switch s.r.Method {
 	case "GET":
-		s.err = e.Encode(query(i, s.r.URL.Query()))
+		s.err = json.NewEncoder(s.w).Encode(query(i, s.r.URL.Query()))
 	case "POST":
 		v := i.Create()
 		_, s.err = io.Copy(io.MultiWriter(s.w, v), s.r.Body)
