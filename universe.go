@@ -8,12 +8,6 @@ import (
 // we can represent as a map of string to Inventory.
 type Universe map[string]Inventory
 
-// Reference to an inventory and vessel in a universe
-type reference struct {
-	i Inventory
-	v Vessel
-}
-
 // NewUniverse makes a new make and returns a universe
 // for the newly created map.
 func NewUniverse() Universe {
