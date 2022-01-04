@@ -24,7 +24,7 @@ type Querier interface {
 	Query(map[string][]string) ([]Vessel, error)
 }
 
-func (u Universe) query(i Inventory, s map[string][]string) (res interface{}) {
+func query(i Inventory, s map[string][]string) (res interface{}) {
 	var err error
 	if q, ok := i.(Querier); ok {
 		res, err = q.Query(s)
